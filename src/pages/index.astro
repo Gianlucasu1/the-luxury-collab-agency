@@ -5,6 +5,10 @@ import Navigation from "../components/Navigation.astro";
 import HeroSection from "../components/HeroSection.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
+import OurOfferings from "../components/OurOfferings";
+import BlogSubscription from "../components/home/BlogSubscription.astro";
+import PartnersGrid from "../components/home/PartnersGrid.astro";
+import Contact from "../components/home/Contact.astro";
 ---
 
 <MainLayout>
@@ -15,6 +19,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 	<body class="font-secondary">
 		<Navigation />
 		<HeroSection />
+		<OurOfferings client:load />
+		<BlogSubscription />
+		<PartnersGrid />
+		<Contact />
 		<Footer />
 	</body>
 </MainLayout>

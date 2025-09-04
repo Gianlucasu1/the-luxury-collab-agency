@@ -1,157 +1,134 @@
 ---
-import pic1 from "../assets/luxurycollablogo.png";
+import Pic1 from '../assets/luxurycollablogo.png';
 ---
 
-
-<nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
-  <div class="container">
-    <div class="flex items-center justify-between py-4">
+<nav
+  id="site-nav"
+  class="transition-all duration-300 bg-transparent"
+  style="position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 9999; transform: translateZ(0); -webkit-transform: translateZ(0);"
+>
+  <div class="mx-auto py-4 px-4" style="width: min(90vw, 1280px);">
+    <div class="flex items-center justify-between">
       <!-- Logo -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center space-x-2">
         <a href="/" class="hover:opacity-80 transition-opacity duration-300">
-          <img src={pic1.src} alt="The Luxury Collab Agency" class="w-40 h-auto object-contain" />
+          <img src={Pic1.src} alt="The Luxury Collab Agency" class="w-40 h-auto object-contain" />
         </a>
       </div>
 
       <!-- Navigation Links (desktop only) -->
-      <div class="hidden lg:flex flex-1 items-center justify-center gap-12 xl:gap-16 2xl:gap-20">
-        <a href="/about-us" class="nav-link">About us</a>
-        <a href="/yacht-services" class="nav-link text-center leading-tight">
-          <span>Luxury Yachts</span><br />
-          <span>&amp; Sailing</span>
+      <div class="hidden lg:flex flex-1 items-center justify-center gap-x-12 xl:gap-x-16 2xl:gap-x-20">
+        <a href="/about-us" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          About us
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
         </a>
-        <a href="/private-jets" class="nav-link">Private Jets &amp; Aerial Escapes</a>
-        <a href="/luxury-getaways" class="nav-link">Luxury Getaways</a>
-        <a href="#contact" class="nav-link">Blog</a>
-        <a href="/contact-us" class="nav-link">Contact Us</a>
+        <a href="/yacht-services" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          <span>Luxury Yachts</span><br /><span>&amp; Sailing</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="/private-jets" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          Private Jets &amp; Aerial Escapes
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="/luxury-getaways" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          Luxury Getaways
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="/blog" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          Blog
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="/contact-us" class="relative text-white hover:text-[#efb958] transition-colors duration-300 font-sans font-medium group max-w-[12rem] text-center leading-tight whitespace-normal break-words lg:text-[0.95rem] xl:text-base two-line-ellipsis">
+          Contact Us
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#efb958] transition-all duration-300 group-hover:w-full"></span>
+        </a>
       </div>
 
       <!-- Account Button (desktop only) -->
-      <a href="/account" class="hidden lg:inline-block premium-cta px-6 py-3">Account</a>
+      <a href="#" class="hidden lg:inline-flex premium-cta px-4 py-2 lg:text-sm xl:text-base">
+        Account
+      </a>
 
-      <!-- Mobile/Tablet Menu Button -->
-      <button class="block lg:hidden bg-transparent border-none text-yellow-400 cursor-pointer p-2" id="mobile-menu-btn">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <!-- Mobile/Tablet Menu -->
+      <div class="lg:hidden">
+        <button id="mobile-menu-trigger" class="text-[#efb958]" aria-controls="mobile-menu" aria-expanded="false">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] sm:w-[380px] bg-[#11353e] text-white border-l border-[#ffffff1a] translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-4 flex items-center justify-between">
+      <span class="text-white/80 text-sm">Menu</span>
+      <button id="mobile-menu-close" class="text-white/80 hover:text-white" aria-label="Close menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
+    </div>
+    <div class="mt-4 space-y-4 p-4">
+      <a href="/about-us" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">About us</a>
+      <a href="/yacht-services" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">Luxury Yachts &amp; Sailing</a>
+      <a href="/private-jets" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">Private Jets &amp; Aerial Escapes</a>
+      <a href="/luxury-getaways" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">Luxury Getaways</a>
+      <a href="/blog" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">Blog</a>
+      <a href="/contact-us" class="block px-2 py-2 rounded-md hover:bg-[#ffffff0d] transition-colors font-sans text-lg">Contact Us</a>
+      <div class="pt-2">
+        <a href="#" class="w-full bg-[#11353e] hover:bg-[#11353e]/95 text-white font-semibold rounded-lg ring-1 ring-white/10 inline-flex items-center justify-center px-4 py-2">
+          Account
+        </a>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu Overlay -->
-<div class="fixed top-0 left-0 w-full h-screen bg-black/50 opacity-0 invisible transition-all duration-300 z-[55]" id="mobile-menu-overlay"></div>
-
-<!-- Mobile Menu -->
-<div class="fixed top-0 -right-full w-[80%] max-w-[380px] h-screen bg-blue-900 text-white border-l border-white/10 transition-all duration-300 z-[60] p-10" id="mobile-menu">
-  <button class="absolute top-4 right-4 bg-transparent border-none text-white cursor-pointer p-2" id="mobile-menu-close">
-    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
-  
-  <div class="mt-10 flex flex-col gap-4">
-    <a href="/about-us" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">About us</a>
-    <a href="/yacht-services" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">
-      <span>Luxury Yachts</span><br />
-      <span>&amp; Sailing</span>
-    </a>
-    <a href="/private-jets" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">Private Jets &amp; Aerial Escapes</a>
-    <a href="/luxury-getaways" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">Luxury Getaways</a>
-    <a href="#contact" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">Blog</a>
-    <a href="/contact-us" class="block px-2 py-2 rounded-md hover:bg-white/5 transition-colors text-lg text-white no-underline">Contact Us</a>
-    
-    <div class="mt-4 pt-2">
-      <button class="premium-cta w-full px-4 py-3">Account</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Scroll behavior
-  function handleScroll() {
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-      if (window.scrollY > 50) {
-        navbar.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.4) 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0) 100%)';
-        navbar.style.backdropFilter = 'blur(12px)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-      } else {
-        navbar.style.background = 'transparent';
-        navbar.style.backdropFilter = '';
-        navbar.style.boxShadow = '';
-      }
+<script type="module">
+  const nav = document.getElementById('site-nav');
+  const gradient = 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0) 100%)';
+  const onScroll = () => {
+    if (!nav) return;
+    const scrolled = (window.scrollY || 0) > 50;
+    if (scrolled) {
+      nav.classList.add('backdrop-blur-md');
+      nav.style.background = gradient;
+    } else {
+      nav.classList.remove('backdrop-blur-md');
+      nav.style.background = 'transparent';
     }
-  }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  // Mobile menu functionality
-  function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-menu-overlay');
-    
-    if (mobileMenu && overlay) {
-      const isOpen = mobileMenu.classList.contains('right-0');
-      
-      if (isOpen) {
-        mobileMenu.classList.remove('right-0');
-        mobileMenu.classList.add('-right-full');
-        overlay.classList.remove('opacity-100', 'visible');
-        overlay.classList.add('opacity-0', 'invisible');
-        document.body.style.overflow = '';
-      } else {
-        mobileMenu.classList.remove('-right-full');
-        mobileMenu.classList.add('right-0');
-        overlay.classList.remove('opacity-0', 'invisible');
-        overlay.classList.add('opacity-100', 'visible');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-  }
-
-  function closeMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-menu-overlay');
-    
-    if (mobileMenu && overlay) {
-      mobileMenu.classList.remove('right-0');
-      mobileMenu.classList.add('-right-full');
-      overlay.classList.remove('opacity-100', 'visible');
-      overlay.classList.add('opacity-0', 'invisible');
-      document.body.style.overflow = '';
-    }
-  }
-
-  // Event listeners
-  document.addEventListener('DOMContentLoaded', () => {
-    // Scroll event
-    window.addEventListener('scroll', handleScroll);
-    
-    // Mobile menu events
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const overlay = document.getElementById('mobile-menu-overlay');
-    
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    }
-    
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', closeMobileMenu);
-    }
-    
-    if (overlay) {
-      overlay.addEventListener('click', closeMobileMenu);
-    }
-
-    // Close mobile menu when clicking on nav links
-    const mobileNavLinks = document.querySelectorAll('.mobile-menu-nav a');
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
-    });
-  });
-
-  // Clean up event listeners when component is unmounted
-  document.addEventListener('astro:before-swap', () => {
-    window.removeEventListener('scroll', handleScroll);
-  });
+  // Mobile menu
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileTrigger = document.getElementById('mobile-menu-trigger');
+  const mobileClose = document.getElementById('mobile-menu-close');
+  const openMenu = () => {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('translate-x-full');
+    mobileTrigger?.setAttribute('aria-expanded', 'true');
+  };
+  const closeMenu = () => {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('translate-x-full');
+    mobileTrigger?.setAttribute('aria-expanded', 'false');
+  };
+  mobileTrigger?.addEventListener('click', openMenu);
+  mobileClose?.addEventListener('click', closeMenu);
+  // Close on route click (basic)
+  mobileMenu?.querySelectorAll('a')?.forEach((a) => a.addEventListener('click', closeMenu));
 </script>
+
+<style>
+  .two-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+</style>

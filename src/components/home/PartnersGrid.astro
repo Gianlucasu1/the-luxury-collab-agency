@@ -1,0 +1,61 @@
+---
+import logo from '../../assets/logo.png';
+import luxuryCollabLogoPng from '../../assets/luxurycollablogo.png';
+import whiteLogo from '../../assets/white_logo.png';
+
+const partners = [
+  { name: 'The Luxury Collab', logo: luxuryCollabLogoPng },
+  { name: 'The Luxury Collab (WebP)', logo: whiteLogo },
+  { name: 'TLCA Monogram', logo: logo },
+];
+---
+
+<section
+  class="py-24 relative overflow-hidden"
+  style="background-image: linear-gradient(to bottom, #11353e, #2a6781); opacity: 0.9;"
+>
+  <!-- Background Logo -->
+  <div class="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+    <img
+      src={whiteLogo.src}
+      alt="The Luxury Collab Agency Background"
+      class="w-[500px] h-auto object-contain"
+    />
+  </div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-sans font-bold text-[#ead4b7] mb-6">
+        Our Prestigious <span class="text-[#efb958]">Partners</span>
+      </h2>
+      <p class="text-xl text-[#ead4b7] font-sans max-w-2xl mx-auto">
+        Trusted collaborations powering unparalleled luxury experiences
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {partners.map((partner) => (
+        <div
+          class="p-8 rounded-2xl hover:scale-105 transition-all duration-300 group flex items-center justify-center backdrop-blur-[20px] border border-white/10"
+          style="background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);"
+        >
+          <div class="flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-[#efb958]/10 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-[#efb958]/20 transition-colors duration-300">
+              <img src={partner.logo.src} alt={partner.name} class="w-16 h-16 object-contain" />
+            </div>
+            <h3 class="text-lg font-sans font-semibold text-[#ead4b7]">
+              {partner.name}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+      <a href="#" class="bg-[#efb958] text-[#11353e] hover:bg-[#dca64f] rounded-md font-medium px-8 py-4 text-lg inline-flex items-center justify-center transition-colors duration-300">
+        Become a Partner
+      </a>
+    </div>
+  </div>
+</section>
