@@ -1,13 +1,12 @@
 ---
-import heroJet from '@/assets/hero-jet.jpg';
+import heroJet from '../../assets/hero-jet.jpg';
 ---
 
 <!-- Hero Section -->
 <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
   <div 
     class="absolute inset-0 bg-cover bg-center"
-    style="background-image: url({heroJet});"
-  />
+    style={`background-image: url(${heroJet.src});`}  />
   <div class="absolute inset-0 bg-[#11353e] opacity-70"></div>
   
   <div class="relative z-10 text-center max-w-4xl mx-auto px-6">

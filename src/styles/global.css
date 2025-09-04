@@ -317,8 +317,8 @@ main {
 
 /* Container Class */
 .container {
-	max-width: 1300px;
-	width: 100%;
+	max-width: 1300px !important;
+	width: 90% !important;
 	margin: 0 auto;
 	padding: 0 1.5rem;
 }

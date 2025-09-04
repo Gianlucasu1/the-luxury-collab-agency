@@ -1,0 +1,79 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import ServiceHero from '../components/services/ServicesHero.astro';
+import ServiceFilters from '../components/services/ServicesFilters.astro';
+import ServiceGrid from '../components/services/ServicesGrid.astro';
+import ServiceFAQ from '../components/services/ServicesFaq.astro';
+import ServiceCTA from '../components/services/ServicesCta.astro';
+import yachtHero from '@/assets/yacht_service_hero.jpg';
+import yacht_1 from '@/assets/yacht_1.png';
+import yacht_2 from '@/assets/yacht_2.png';
+import yacht_3 from '@/assets/yacht_3.png';
+import yachtFooterCover from '@/assets/yacht_footer_cover.png';
+
+const yachtPhotos = {
+  yacht_1: yacht_1.src,
+  yacht_2: yacht_2.src,
+  yacht_3: yacht_3.src,
+};
+
+const yachts = [
+  { id: 1, name: 'Aegean Majesty', photo: 'yacht_1', address: 'Palm Ave, La Mesa, CA 91941', dimensions: '7.2M / 38M', capacity: 12, priceFrom: '$10,000' },
+  { id: 2, name: 'Nordic Whisper', photo: 'yacht_2', address: 'Ocean Dr, Miami Beach, FL 33139', dimensions: '6.5M / 24M', capacity: 10, priceFrom: '$7,500' },
+  { id: 3, name: 'Azure Crest', photo: 'yacht_3', address: 'Harbor Blvd, Marina del Rey, CA 90292', dimensions: '8.0M / 42M', capacity: 8, priceFrom: '$12,400' },
+  { id: 4, name: 'Golden Horizon', photo: 'yacht_1', address: 'Marina Way, Newport Beach, CA 92663', dimensions: '9.0M / 55M', capacity: 14, priceFrom: '$15,300' },
+  { id: 5, name: 'Sea Serenade', photo: 'yacht_2', address: 'Pier 39, San Francisco, CA 94133', dimensions: '5.8M / 28M', capacity: 8, priceFrom: '$5,200' },
+  { id: 6, name: 'Ocean Pearl', photo: 'yacht_3', address: 'Port Hercule, Monaco 98000', dimensions: '7.8M / 32M', capacity: 10, priceFrom: '$9,100' },
+  { id: 7, name: 'Mediterranea', photo: 'yacht_1', address: 'Port of Ibiza, Spain 07800', dimensions: '7.0M / 36M', capacity: 10, priceFrom: '$8,900' },
+  { id: 8, name: 'Atlantic Breeze', photo: 'yacht_2', address: 'Fisher Island Dr, Miami, FL 33109', dimensions: '6.2M / 30M', capacity: 9, priceFrom: '$7,200' },
+  { id: 9, name: 'Pacifica Queen', photo: 'yacht_3', address: 'Kailua Pier, HI 96740', dimensions: '8.5M / 44M', capacity: 11, priceFrom: '$13,750' },
+];
+
+const faqs = Array.from({ length: 5 }, () => ({
+  q: 'What is the process of renting a yacht with TLCA?',
+  a: 'We start with your preferences, curate options, arrange viewings (virtual or in-person), and handle all logistics from crew to itinerary.'
+}));
+
+const filters = [
+  { name: 'Destination', options: ['Mediterranean', 'Caribbean', 'Pacific'] },
+  { name: 'Yacht Name', options: ['Aegean Majesty', 'Nordic Whisper', 'Azure Crest'] },
+  { name: 'Yacht Type', options: ['Motor Yacht', 'Catamaran', 'Sailing Yacht', 'Mega Yacht'] },
+  { name: 'Guests', options: ['1-6', '7-10', '11-14'] },
+  { name: 'Price', options: ['Low to High', 'High to Low'] }
+];
+---
+
+<MainLayout title="Luxury Yachts & Sailing - The Luxury Collab Agency">
+  <Navigation />
+  
+  <ServiceHero 
+    title="Luxury Yachts"
+    subtitle="and sailing"
+    description="Curated experiences in the palm of your hands"
+    ctaText="Explore Yachts"
+    ctaLink="#yachts"
+    backgroundImage={yachtHero.src}
+  />
+  
+  <ServiceGrid 
+    sectionId="yachts"
+    items={yachts}
+    photos={yachtPhotos}
+    detailLink="/yacht"
+    filters={filters}
+  />
+  
+  <ServiceFAQ faqs={faqs} />
+  
+  <ServiceCTA 
+    backgroundImage={yachtFooterCover.src}
+    title="Start Your Journey Here"
+    ctaText="Contact Us"
+    ctaLink="/contact-us"
+    scriptText="An unforgettable experience"
+  />
+  
+  <Footer />
+</MainLayout>

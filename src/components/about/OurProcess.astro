@@ -1,6 +1,6 @@
 ---
-import waterBg from '@/assets/water_bg.png';
-import logo from '@/assets/logo.png';
+import waterBg from '../../assets/water_bg.png';
+import logo from '../../assets/logo.png';
 
 const processSteps = [
   {
@@ -32,8 +32,8 @@ const processSteps = [
 
 <!-- Our Process -->
 <section 
-  class="py-20 relative overflow-hidden"
-  style="background-image: url({waterBg}); background-repeat: no-repeat; background-position: center; background-size: cover;"
+  class="py-20 relative overflow-hidden bg-no-repeat bg-center bg-cover"
+  style={`background-image: url(${waterBg.src});`}
 >
   <div class="absolute inset-0 bg-gradient-to-br from-[#2a6781]/90 via-[#2a6781]/70 to-[#2a6781]/50"></div>
   <div class="container mx-auto px-6 relative z-10">

@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaText: string;
+  ctaLink: string;
+  backgroundImage: string;
+}
+
+const { title, subtitle, description, ctaText, ctaLink, backgroundImage } = Astro.props;
+---
+
+<!-- Hero Section -->
+<section class="relative w-full h-screen overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center bg-right" style={`background-image: url(${backgroundImage});`}></div>
+  <div class="absolute inset-0" style="background: linear-gradient(to bottom, #11353e33, #2a67811a, #11353e59);"></div>
+  <div class="relative z-10 h-full flex items-center">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl">
+        <h1 class="text-white mt-3 font-semibold [font-family:'Libre_Bodoni',serif] text-[40px] leading-[44px] tracking-[-1px] md:text-[64px] md:leading-[64px] lg:text-[81px] lg:leading-[80px]">
+          {title}
+          <br />
+          <span class="text-[#efb958]">{subtitle}</span>
+        </h1>
+        <p class="mt-4 font-sans font-normal text-white tracking-[-1px] text-[20px] leading-[30px] md:text-[28px] md:leading-[40px] lg:text-[36px] lg:leading-[50px]">
+          {description}
+        </p>
+        <a href={ctaLink} class="inline-block mt-8 px-8 py-4 bg-[#efb958] text-[#11353e] hover:bg-[#dca64f] rounded-md font-medium font-sans transition-colors duration-300">
+          {ctaText}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

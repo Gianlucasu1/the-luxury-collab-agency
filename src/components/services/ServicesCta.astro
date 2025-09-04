@@ -1,0 +1,40 @@
+---
+export interface Props {
+  backgroundImage: string;
+  title: string;
+  ctaText: string;
+  ctaLink: string;
+  scriptText: string;
+}
+
+const { backgroundImage, title, ctaText, ctaLink, scriptText } = Astro.props;
+---
+
+<!-- CTA Section -->
+<section
+  class="relative overflow-hidden w-full min-h-[600px] sm:min-h-[700px] md:min-h-[900px] lg:min-h-[1100px] bg-no-repeat bg-center bg-cover"
+  style={`background-image: url(${backgroundImage});`}
+>
+  <div class="absolute inset-0 bg-black/20"></div>
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 h-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 h-full items-end">
+      {/* Left: Title + CTA button */}
+      <div class="pb-20 sm:pb-24 md:pb-28 lg:pb-32 text-left">
+        <h2 class="text-white [font-family:'Libre_Bodoni',serif] font-bold tracking-[-0.01em] text-[40px] leading-[44px] md:text-[56px] md:leading-[50px] lg:text-[64px] lg:leading-[56px]">
+          {title}
+        </h2>
+        <div class="mt-6">
+          <a href={ctaLink} class="bg-[#efb958] text-[#11353e] hover:bg-[#dca64f] rounded-md font-medium px-8 py-4 font-semibold inline-block transition-colors duration-300">
+            {ctaText}
+          </a>
+        </div>
+      </div>
+      {/* Right: Script text */}
+      <div class="pb-20 sm:pb-24 md:pb-28 lg:pb-32 text-right">
+        <p class="[font-family:'Sacramento',cursive] font-normal tracking-[-0.01em] text-white text-[36px] leading-[28px] sm:text-[48px] sm:leading-[34px] md:text-[56px] md:leading-[36px] lg:text-[64px] lg:leading-[39px]">
+          {scriptText}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

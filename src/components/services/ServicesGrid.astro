@@ -1,0 +1,129 @@
+---
+export interface Props {
+  sectionId: string;
+  items: Array<{
+    id: number;
+    name: string;
+    photo: string;
+    address: string;
+    dimensions: string;
+    capacity: number;
+    priceFrom: string;
+  }>;
+  photos: Record<string, string>;
+  detailLink: string;
+  filters: Array<{
+    name: string;
+    options: string[];
+  }>;
+}
+
+const { sectionId, items, photos, detailLink, filters } = Astro.props;
+---
+
+<!-- Service Grid -->
+<section
+  id={sectionId}
+  class="w-full relative pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24"
+  style="background-image: linear-gradient(to right, #11353e, #2a6781), linear-gradient(to bottom, rgba(17,53,62,0.6), rgba(42,103,129,0.2)); background-blend-mode: overlay;"
+>
+  <!-- Floating filter panel overlaps hero and this section ~50/50 
+  <div class="absolute left-1/2 -translate-x-1/2 -top-0 -translate-y-1/2 z-30 w-full">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="rounded-2xl bg-[#2a6781]/90 shadow-2xl ring-1 ring-white/10 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-5 md:py-6">
+        <form class="flex flex-col gap-3">
+          <div class="flex items-center gap-3 text-white/90 font-secondary text-sm">
+            <span class="whitespace-nowrap">Sort by</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 w-full">
+              {filters.map((filter) => (
+                <div class="relative">
+                  <select 
+                    class="w-full appearance-none rounded-md bg-white text-[#11353e] px-3 py-2 text-sm border border-white/60 outline-none focus:ring-2 focus:ring-[#efb958] shadow-md"
+                  >
+                    <option>{filter.name}</option>
+                    {filter.options.map((option) => (
+                      <option>{option}</option>
+                    ))}
+                  </select>
+                  <svg 
+                    class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#11353e]/70 transition-transform duration-200 w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              ))}
+              <div class="relative">
+                <input
+                  class="w-full rounded-md bg-white text-[#11353e] pl-9 pr-3 py-2 text-sm border border-white/60 outline-none focus:ring-2 focus:ring-[#efb958] shadow-md"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+-->
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {items.map((item) => (
+        <a href={`${detailLink}/${item.id}`} class="block rounded-2xl overflow-hidden shadow-xl focus:outline-none focus:ring-2 focus:ring-[#efb958] h-full flex flex-col">
+          {/* Image container with dark teal background - fixed height */}
+          <div class="relative bg-[#11353e] h-64 flex-shrink-0">
+            {/* Gold name ribbon */}
+            <div class="absolute top-4 left-4 z-10">
+              <span class="px-4 py-1 rounded-full font-sans font-bold uppercase text-sm bg-[#efb958] text-[#11353e]">
+                {item.name}
+              </span>
+            </div>
+            <img src={photos[item.photo]} alt={item.name} class="w-full h-full object-cover" />
+          </div>
+
+          {/* Details section (white background) - fixed height */}
+          <div class="bg-white p-6 font-sans h-32 flex flex-col">
+            {/* Row 1: Location and dimensions */}
+            <div class="flex items-center justify-between mb-4">
+              <div class="text-[#374151] flex-1 min-w-0">
+                <span class="text-sm font-medium truncate">{item.address}</span>
+              </div>
+              <div class="text-[#9CA3AF] text-xs font-medium ml-3 flex-shrink-0">{item.dimensions}</div>
+            </div>
+
+            {/* Row 2: Passengers and price */}
+            <div class="flex items-center justify-between mt-auto">
+              <div class="text-[#374151]">
+                <span class="text-sm font-medium">{item.capacity} passengers</span>
+              </div>
+              <div class="text-[#111827] text-lg font-bold text-right">From {item.priceFrom}</div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+    
+    {/* Pagination right after grid */}
+    <div class="mt-10 md:mt-12 lg:mt-16">
+      <div class="overflow-x-auto">
+        <div class="w-max flex gap-2">
+          {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+            <a
+              href="#"
+              class={`flex-shrink-0 px-3 py-2 text-sm border rounded-md transition-colors duration-200 ${
+                n === 1 
+                  ? 'bg-[#efb958] text-[#11353e] border-[#efb958]' 
+                  : 'text-[#efb958] border-[#efb958]/50 hover:bg-[#efb958]/10'
+              }`}
+              aria-current={n === 1 ? 'page' : undefined}
+            >
+              {n}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

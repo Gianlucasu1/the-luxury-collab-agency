@@ -1,0 +1,54 @@
+---
+export interface Props {
+  filters: Array<{
+    name: string;
+    options: string[];
+  }>;
+}
+
+const { filters } = Astro.props;
+---
+
+<!-- Floating filter panel -->
+<div class="absolute left-1/2 -translate-x-1/2 -top-0 -translate-y-1/2 z-30 w-full">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="rounded-2xl bg-[#2a6781]/90 shadow-2xl ring-1 ring-white/10 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-5 md:py-6">
+      <form class="flex flex-col gap-3">
+        <div class="flex items-center gap-3 text-white/90 font-sans text-sm">
+          <span class="whitespace-nowrap">Sort by</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 w-full">
+            {filters.map((filter) => (
+              <div class="relative">
+                <select 
+                  class="w-full appearance-none rounded-md bg-white text-[#11353e] px-3 py-2 text-sm border border-white/60 outline-none focus:ring-2 focus:ring-[#efb958] shadow-md"
+                >
+                  <option>{filter.name}</option>
+                  {filter.options.map((option) => (
+                    <option>{option}</option>
+                  ))}
+                </select>
+                <svg 
+                  class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#11353e]/70 transition-transform duration-200 w-4 h-4" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            ))}
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#11353e]/60 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                class="w-full rounded-md bg-white text-[#11353e] pl-9 pr-3 py-2 text-sm border border-white/60 outline-none focus:ring-2 focus:ring-[#efb958] shadow-md"
+                placeholder="Search"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
