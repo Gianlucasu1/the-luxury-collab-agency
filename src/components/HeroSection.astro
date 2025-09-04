@@ -1,0 +1,93 @@
+---
+// HeroSection.astro - Astro version of the React HeroSection component
+---
+
+<section class="relative h-screen overflow-hidden">
+  <!-- Background Image with Parallax -->
+  <div 
+    id="hero-bg"
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/src/assets/hero-jet.jpg');"
+  ></div>
+  
+  <!-- Overlay - Dark blue and Nordic Tide -->
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(to bottom, #11353eB3, #2a678173, #11353eD9);"
+  ></div>
+  
+  <!-- Strong Radial Shadow for Maximum Text Readability -->
+  <div
+    class="absolute inset-0 pointer-events-none z-[5]"
+    style="background: radial-gradient(circle at center, transparent 0%, transparent 60%, #000000CC 100%);"
+  ></div>
+  
+  <!-- Content (constrained) -->
+  <div class="relative z-10 h-full flex items-center justify-center">
+    <div class="container mx-auto px-6">
+      <div class="text-center max-w-4xl mx-auto relative">
+        <!-- Semi-transparent background for text -->
+        <div
+          class="absolute inset-0 rounded-2xl backdrop-blur-sm -m-8"
+          style="background-color: #00000033;"
+        ></div>
+        
+        <div class="relative z-10">
+          <h1 class="text-5xl md:text-7xl font-primary font-bold text-white mb-6 hero-text fade-in">
+            Unlock the World's Most
+            <span class="block text-[#efb958]">Exclusive Experiences</span>
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-white/90 mb-8 font-secondary font-light max-w-2xl mx-auto fade-in drop-shadow-2xl [text-shadow:_0_4px_12px_rgba(0,0,0,0.9)]">
+            Private Jets, Luxury Villas, Exotic Cars – At Your Fingertips
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in">
+            <button class="premium-cta-dark text-lg px-10 py-6">
+              Explore Experiences
+            </button>
+            <button class="premium-cta text-lg px-10 py-6">
+              Watch Our Story
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator - Positioned at bottom of hero section -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+    <div class="w-6 h-10 border-2 rounded-full flex justify-center border-[#efb958]">
+      <div class="w-1 h-3 rounded-full mt-2 animate-pulse bg-[#efb958]"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Parallax scrolling effect
+  let scrollY = 0;
+  
+  function handleScroll() {
+    scrollY = window.scrollY;
+    const heroBackground = document.getElementById('hero-bg');
+    if (heroBackground) {
+      heroBackground.style.transform = `translateY(${scrollY * 0.5}px)`;
+    }
+  }
+  
+  // Add scroll listener
+  window.addEventListener('scroll', handleScroll);
+  
+  // Cleanup function for when component unmounts (if needed)
+  document.addEventListener('astro:before-swap', () => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+</script>
+
+<style>
+  /* Hero-specific styles */
+  .hero-text {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  }
+</style>
+

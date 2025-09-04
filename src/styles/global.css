@@ -1,3 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-primary: "Bauer Bodoni Std", "Bauer Bodoni", serif;
+  --font-family-secondary: "Montserrat", sans-serif;
+}
+
 /*
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
@@ -15,6 +22,83 @@
 	--box-shadow:
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px
 		rgba(var(--gray), 33%);
+	
+	/* Brand Colors */
+	--gold: #efb958;
+	--dark-blue: #11353e;
+	--nordic-tide: #2a6781;
+	--beige: #ead4b7;
+	--white-sand: #f3ede5;
+
+	/* Tailwind CSS Variables */
+	--border: 214.3 31.8% 91.4%;
+	--input: 214.3 31.8% 91.4%;
+	--ring: 222.2 84% 4.9%;
+	--background: 0 0% 100%;
+	--foreground: 222.2 84% 4.9%;
+	--primary: 222.2 47.4% 11.2%;
+	--primary-foreground: 210 40% 98%;
+	--secondary: 210 40% 96%;
+	--secondary-foreground: 222.2 47.4% 11.2%;
+	--muted: 210 40% 96%;
+	--muted-foreground: 215.4 16.3% 46.9%;
+	--accent: 210 40% 96%;
+	--accent-foreground: 222.2 47.4% 11.2%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 210 40% 98%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 222.2 84% 4.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 222.2 84% 4.9%;
+	--radius: 0.5rem;
+
+	/* Sidebar Variables */
+	--sidebar-background: 0 0% 98%;
+	--sidebar-foreground: 240 5.3% 26.1%;
+	--sidebar-primary: 240 5.9% 10%;
+	--sidebar-primary-foreground: 0 0% 98%;
+	--sidebar-accent: 240 4.8% 95.9%;
+	--sidebar-accent-foreground: 240 5.9% 10%;
+	--sidebar-border: 220 13% 91%;
+	--sidebar-ring: 217.2 91.2% 59.8%;
+
+	/* Luxury Colors (converted to HSL) */
+	--luxury-gold: 42 79% 64%;
+	--luxury-gold-light: 42 79% 74%;
+	--luxury-gold-dark: 42 79% 54%;
+	--luxury-navy: 197 60% 14%;
+	--luxury-navy-light: 197 60% 24%;
+	--luxury-navy-dark: 197 60% 8%;
+
+	/* Elite Colors */
+	--elite-teal: 197 47% 34%;
+	--elite-teal-light: 197 47% 44%;
+	--elite-teal-dark: 197 47% 24%;
+	--nordic-tide: 197 47% 34%;
+	--nordic-tide-light: 197 47% 44%;
+	--nordic-tide-dark: 197 47% 24%;
+
+	/* Marigold */
+	--marigold: 42 79% 64%;
+	--marigold-light: 42 79% 74%;
+	--marigold-dark: 42 79% 54%;
+
+	/* Beige */
+	--beige: 39 53% 84%;
+	--beige-light: 39 53% 90%;
+	--beige-dark: 39 53% 78%;
+
+	/* White Sand */
+	--white-sand: 40 53% 92%;
+	--white-sand-light: 40 53% 96%;
+	--white-sand-dark: 40 53% 88%;
+
+	/* Brand Theme Colors */
+	--primary: 197 47% 34%;      /* Elite Teal */
+	--secondary: 197 47% 34%;    /* Nordic Tide */
+	--tertiary: 42 79% 64%;      /* Marigold/Gold */
+	--quaternary: 39 53% 84%;    /* Beige */
+	--fifth: 40 53% 92%;         /* White Sand */
 }
 @font-face {
 	font-family: "Atkinson";
@@ -31,7 +115,7 @@
 	font-display: swap;
 }
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -43,22 +127,21 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 }
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+/* Automatic Font Application */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Bauer Bodoni Std', 'Bauer Bodoni', serif;
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
 	line-height: 1.2;
+	font-weight: 600;
 }
+
+p, li, span:not(.font-primary) {
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* Typography Scale */
 h1 {
 	font-size: 3.052em;
 }
@@ -74,66 +157,128 @@ h4 {
 h5 {
 	font-size: 1.25em;
 }
-strong,
-b {
-	font-weight: 700;
+main {
+	width: 720px;
+	max-width: calc(100% - 2em);
+	margin: auto;
+	padding: 3em 1em;
 }
-a {
-	color: var(--accent);
+@layer components {
+  /* Font Family Classes */
+  .font-primary {
+    font-family: 'Bauer Bodoni Std', 'Bauer Bodoni', serif;
+  }
+
+  .font-secondary {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Premium CTA Button - Golden background with white illumination */
+  .premium-cta {
+    @apply relative overflow-hidden font-semibold rounded-lg transition-all duration-300 hover:scale-105;
+    background: #efb958 !important;
+    color: #11353e !important;
+    box-shadow: 
+      0 10px 30px -5px rgba(255, 255, 255, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 0 20px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .premium-cta::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
+  }
+
+  .premium-cta:hover {
+    @apply scale-105;
+    background: #f2c16b !important;
+    box-shadow: 
+      0 15px 40px -5px rgba(255, 255, 255, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  .premium-cta:hover::before {
+    @apply opacity-100;
+    animation: shimmer 0.6s ease-out;
+  }
+
+  /* Premium CTA Dark Variant */
+  .premium-cta-dark {
+    @apply relative overflow-hidden font-semibold rounded-lg transition-all duration-300 hover:scale-105;
+    background: #11353e;
+    color: #f3ede5;
+    box-shadow: 
+      0 10px 30px -5px rgba(243, 237, 229, 0.35),
+      0 0 0 1px rgba(243, 237, 229, 0.2),
+      0 0 20px rgba(243, 237, 229, 0.2);
+    border: 1px solid rgba(243, 237, 229, 0.2);
+  }
+
+  .premium-cta-dark::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(45deg, transparent 30%, rgba(243,237,229,0.3) 50%, transparent 70%);
+  }
+
+  .premium-cta-dark:hover {
+    @apply scale-105;
+    box-shadow: 
+      0 15px 40px -5px rgba(243, 237, 229, 0.45),
+      0 0 0 1px rgba(243, 237, 229, 0.3),
+      0 0 30px rgba(243, 237, 229, 0.3);
+    background: #0f2f36;
+  }
+
+  .premium-cta-dark:hover::before {
+    @apply opacity-100;
+    animation: shimmer 0.6s ease-out;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
-a:hover {
-	color: var(--accent);
+
+@layer utilities {
+  .animate-partners-scroll {
+    animation: partners-scroll 40s linear infinite;
+  }
 }
-p {
-	margin-bottom: 1em;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.prose p {
-	margin-bottom: 2em;
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
-}
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+
+@keyframes partners-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .sr-only {
@@ -153,3 +298,13 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+/* Container Class */
+.container {
+	max-width: 1300px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+

@@ -1,0 +1,22 @@
+---
+description:
+-> use the colors of the brand always 
+GOLD: #efb958
+
+Dark blue: #11353e
+
+Nordic Tide: #2a6781
+
+Beige: #ead4b7
+
+WhiteSand: #f3ede5
+
+-> Each section created has to have a container class which is going to create a max size container for the section 
+
+-> Use tailwint as much as possible. I prefer tailwind over css normal
+
+-> Always use the cta class we have in global css for the cta buttons in the components created
+
+globs:
+alwaysApply: true
+---
