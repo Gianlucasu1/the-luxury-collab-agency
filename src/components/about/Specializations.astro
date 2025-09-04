@@ -1,0 +1,20 @@
+---
+// This component will be a React island due to its interactive carousel
+import SpecializationsReact from './SpecializationsReact.tsx';
+---
+
+<!-- Niches -->
+<section class="py-20 bg-transparent">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-sans font-bold text-[#ead4b7] mb-6">
+        Our <span class="text-[#efb958]">Specializations</span>
+      </h2>
+      <p class="text-xl text-[#ead4b7] font-sans max-w-2xl mx-auto">
+        Dedicated expertise across the spectrum of luxury experiences
+      </p>
+    </div>
+    
+    <SpecializationsReact client:visible />
+  </div>
+</section>
